@@ -1,10 +1,18 @@
 import { useState } from "react";
 import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0);
+import Board from "../components/Board";
 
-  return <div>Hello, World!</div>;
+function App() {
+  const [board, setBoard] = useState([
+    [0, 0, 1, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+  ]);
+
+  return <Board boardSize={board} />;
 }
 
 export default App;
