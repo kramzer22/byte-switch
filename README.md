@@ -1,2 +1,3 @@
 # byte-switch
-Byte Switch game
+
+Byte Switch by Mark David D. Panganiban

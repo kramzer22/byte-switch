@@ -1,5 +1,6 @@
 import "./board-style.css";
 
+// Board component
 function Board({ boardSize }) {
   return (
     <div className="board-container">
@@ -10,6 +11,7 @@ function Board({ boardSize }) {
   );
 }
 
+// Row component
 function Row({ row }) {
   return (
     <div className="board-row">
@@ -20,6 +22,7 @@ function Row({ row }) {
   );
 }
 
+// Cell Component
 function Cell({ cell }) {
   if (cell === 0) {
     return <div className="board-cell zero"></div>;
