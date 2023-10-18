@@ -18,6 +18,7 @@ function App() {
     touchStart.current = e.touches[0];
   };
 
+  // Detach app ref
   const resetTouch = () => {
     touchStart.current = null;
   };
