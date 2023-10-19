@@ -29,6 +29,15 @@
   background-color: #161515;
 }
 
+.three {
+  background-color: #fdf6f6;
+}
+
 .nine {
   background-color: #352553;
+}
+
+.Z {
+  background-color: #7a3e3e;
+  box-shadow: inset 0 0 0 10px #fdf6f6;
 }
