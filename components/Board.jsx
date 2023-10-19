@@ -28,6 +28,8 @@ function Cell({ cell }) {
     return <div className="board-cell zero"></div>;
   } else if (cell === 1) {
     return <div className="board-cell one"></div>;
+  } else if (cell === 2) {
+    return <div className="board-cell two"></div>;
   } else if (cell === 9) {
     return <div className="board-cell nine"></div>;
   }

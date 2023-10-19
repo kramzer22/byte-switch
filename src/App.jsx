@@ -6,9 +6,9 @@ import Board from "../components/Board";
 function App() {
   const [board, setBoard] = useState([
     [0, 0, 1, 0, 0],
+    [0, 2, 0, 2, 0],
     [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
+    [0, 2, 0, 2, 0],
     [0, 0, 9, 0, 0],
   ]);
   const [playerPosition, setPlayerPosition] = useState("0:2");
@@ -80,30 +80,38 @@ function App() {
     if (direction === "UP" && rowIndex != 0) {
       const newRowIndex = rowIndex - 1;
       const newColumnIndex = columnIndex;
-      setPlayerPosition(newRowIndex + ":" + newColumnIndex);
 
-      updateBoard(rowIndex, columnIndex, newRowIndex, newColumnIndex);
+      if (checkNextCell(newRowIndex, newColumnIndex)) {
+        setPlayerPosition(newRowIndex + ":" + newColumnIndex);
+        updateBoard(rowIndex, columnIndex, newRowIndex, newColumnIndex);
+      }
     } else if (direction === "DOWN" && rowIndex != board.length - 1) {
       const newRowIndex = rowIndex + 1;
       const newColumnIndex = columnIndex;
-      setPlayerPosition(newRowIndex + ":" + newColumnIndex);
 
-      updateBoard(rowIndex, columnIndex, newRowIndex, newColumnIndex);
+      if (checkNextCell(newRowIndex, newColumnIndex)) {
+        setPlayerPosition(newRowIndex + ":" + newColumnIndex);
+        updateBoard(rowIndex, columnIndex, newRowIndex, newColumnIndex);
+      }
     } else if (
       direction === "RIGHT" &&
       columnIndex != board[rowIndex].length - 1
     ) {
       const newRowIndex = rowIndex;
       const newColumnIndex = columnIndex + 1;
-      setPlayerPosition(newRowIndex + ":" + newColumnIndex);
 
-      updateBoard(rowIndex, columnIndex, newRowIndex, newColumnIndex);
+      if (checkNextCell(newRowIndex, newColumnIndex)) {
+        setPlayerPosition(newRowIndex + ":" + newColumnIndex);
+        updateBoard(rowIndex, columnIndex, newRowIndex, newColumnIndex);
+      }
     } else if (direction === "LEFT" && columnIndex != 0) {
       const newRowIndex = rowIndex;
       const newColumnIndex = columnIndex - 1;
-      setPlayerPosition(newRowIndex + ":" + newColumnIndex);
 
-      updateBoard(rowIndex, columnIndex, newRowIndex, newColumnIndex);
+      if (checkNextCell(newRowIndex, newColumnIndex)) {
+        setPlayerPosition(newRowIndex + ":" + newColumnIndex);
+        updateBoard(rowIndex, columnIndex, newRowIndex, newColumnIndex);
+      }
     }
   };
 
@@ -113,6 +121,13 @@ function App() {
     newBoard[rowIndex][columnIndex] = 0;
     newBoard[newRowIndex][newColumnIndex] = 1;
     setBoard(newBoard);
+  };
+
+  const checkNextCell = (row, col) => {
+    if (board[row][col] === 2) {
+      console.log("hit a wall");
+      return false;
+    } else return true;
   };
 
   //console.log(playerPosition);
